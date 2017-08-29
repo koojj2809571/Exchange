@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/list_item_flag_image_view"
+        android:layout_margin="4dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_country_chinese_text_view"
+        android:text="国家名称"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_country_english_text_view"
+        android:text="XXX"
+        android:layout_gravity="center_vertical"
+        android:gravity="right"
+        android:paddingRight="15dp"/>
+
+</LinearLayout>

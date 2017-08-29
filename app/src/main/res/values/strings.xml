@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Exchange</string>
+    <string name="money_before_exchange_hint">输入兑换金额</string>
+</resources>

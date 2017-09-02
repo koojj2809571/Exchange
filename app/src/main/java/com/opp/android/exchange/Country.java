@@ -1,44 +1,57 @@
 package com.opp.android.exchange;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.Log;
+
 /**
  * Created by OPP on 2017/8/30.
  */
 
 public class Country {
-    private String name;
-    private String currency;
-    private String flagResource;
-    private double rate;
+    private static final String TAG = "Country";
+    private String mName;
+    private String mCurrency;
+    private String mFlagPath;
+    private Bitmap mFlag;
+    private double mRate;
 
-    public String getName() {
-        return name;
+    public Country(String assetsPath, Bitmap bitmap, Context context){
+        mFlagPath = assetsPath;
+        String[] components = assetsPath.split("/");
+        String filename = components[components.length-1];
+        mCurrency = filename.replace(".png","").toUpperCase();
+        Integer mNameId = context.getResources().getIdentifier(mCurrency.toLowerCase() + "_name","string",context.getPackageName());
+        Log.d(TAG, mCurrency + "序列号为"+mNameId);
+        mName = context.getString(mNameId);
+        mFlag = bitmap;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return mName;
     }
 
     public String getCurrency() {
-        return currency;
+        return mCurrency;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public String getFlagPath() {
+        return mFlagPath;
     }
 
-    public String getFlagResource() {
-        return flagResource;
+    public Bitmap getFlag(){
+        return mFlag;
     }
 
-    public void setFlagResource(String flagResource) {
-        this.flagResource = flagResource;
+    public void setFlag(Bitmap flag){
+        mFlag = flag;
     }
 
     public double getRate() {
-        return rate;
+        return mRate;
     }
 
     public void setRate(double rate) {
-        this.rate = rate;
+        mRate = rate;
     }
 }

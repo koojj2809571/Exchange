@@ -24,10 +24,9 @@ public class CountryBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + CountryTable.NAME
                 + "(" + " _id integer primary key autoincrement, "
-                + CountryTable.Cols.UUID + ", "
+                + CountryTable.Cols.TIMESTAMP + ", "
                 + CountryTable.Cols.COUNTRY_NAME + ", "
                 + CountryTable.Cols.CURRENCY + ", "
-                + CountryTable.Cols.FLAG_RESOURCE + ", "
                 + CountryTable.Cols.RATE + ")"
         );
     }

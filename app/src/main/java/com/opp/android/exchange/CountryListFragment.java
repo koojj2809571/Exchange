@@ -2,16 +2,13 @@ package com.opp.android.exchange;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.opp.android.exchange.databinding.CountryListBinding;
 import com.opp.android.exchange.databinding.ListItemCountryBinding;
@@ -32,10 +29,6 @@ public class CountryListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCountryStore = CountryStore.get(getActivity());
-//        Integer id = getResources().getIdentifier("aed_name","string",this.getActivity().getPackageName());
-//        String name = getString(id);
-//        Log.d(TAG, "测试" + id+name);
     }
 
     @Nullable
@@ -91,7 +84,7 @@ public class CountryListFragment extends Fragment {
     }
 
     private void updateUI(){
-        mCountryStore = CountryStore.get(getActivity());
+        mCountryStore = CountryStore.get(getActivity(),);
         mCountries = mCountryStore.getCountries();
         mAdapter = new CountryAdapter(mCountries);
         mCountryRecyclerView.setAdapter(mAdapter);

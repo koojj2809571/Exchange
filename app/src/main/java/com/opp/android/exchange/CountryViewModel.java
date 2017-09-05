@@ -43,4 +43,8 @@ public class CountryViewModel extends BaseObservable{
     public String getCurrency(){
         return mCountry.getCurrency();
     }
+
+    public double getRate(){
+        return mCountry.getRate();
+    }
 }

@@ -1,6 +1,7 @@
 package com.opp.android.exchange;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Log;
 
@@ -14,9 +15,10 @@ public class Country {
     private String mCurrency;
     private String mFlagPath;
     private Bitmap mFlag;
-    private double mRate;
+    private Double mRate;
+    private Integer mTimeStamp;
 
-    public Country(String assetsPath, Bitmap bitmap, Context context){
+    public Country(String assetsPath, Bitmap bitmap, Context context,double rate){
         mFlagPath = assetsPath;
         String[] components = assetsPath.split("/");
         String filename = components[components.length-1];
@@ -25,6 +27,7 @@ public class Country {
         Log.d(TAG, mCurrency + "序列号为"+mNameId);
         mName = context.getString(mNameId);
         mFlag = bitmap;
+        mRate = rate;
     }
 
     public String getName() {
@@ -39,19 +42,20 @@ public class Country {
         return mFlagPath;
     }
 
-    public Bitmap getFlag(){
-        return mFlag;
-    }
-
-    public void setFlag(Bitmap flag){
-        mFlag = flag;
-    }
-
-    public double getRate() {
+    public Double getRate() {
         return mRate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(Double rate) {
         mRate = rate;
     }
+
+    public Integer getTimeStamp() {
+        return mTimeStamp;
+    }
+
+    public void setTimeStamp(Integer timeStamp) {
+        mTimeStamp = timeStamp;
+    }
+
 }

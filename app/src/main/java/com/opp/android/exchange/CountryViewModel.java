@@ -6,6 +6,8 @@ import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
+import java.io.InputStream;
+
 /**
  * Created by OPP on 2017/9/2.
  */
@@ -32,18 +34,22 @@ public class CountryViewModel extends BaseObservable{
         imageView.setImageBitmap(flag);
     }
 
+    @Bindable
     public Bitmap getFlag(){
         return mCountry.getFlag();
     }
 
+    @Bindable
     public String getName(){
         return mCountry.getName();
     }
 
+    @Bindable
     public String getCurrency(){
         return mCountry.getCurrency();
     }
 
+    @Bindable
     public double getRate(){
         return mCountry.getRate();
     }

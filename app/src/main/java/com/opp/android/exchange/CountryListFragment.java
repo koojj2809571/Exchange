@@ -43,19 +43,16 @@ public class CountryListFragment extends Fragment {
 
     private class CountryHolder extends RecyclerView.ViewHolder{
         private ListItemCountryBinding mBinding;
-//        private ImageView mFlag;
 
         public CountryHolder(ListItemCountryBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
             mBinding.setViewModel(new CountryViewModel(mCountryStore));
-//            mFlag = binding.getRoot().findViewById(R.id.list_item_flag_image_view);
         }
 
         public void bindCountry(Country country){
             mBinding.getViewModel().setCountry(country);
             mBinding.executePendingBindings();
-//            mFlag.setImageBitmap(country.getFlag());
         }
     }
 
@@ -84,7 +81,7 @@ public class CountryListFragment extends Fragment {
     }
 
     private void updateUI(){
-        mCountryStore = CountryStore.get(getActivity(),);
+        mCountryStore = CountryStore.get(getActivity());
         mCountries = mCountryStore.getCountries();
         mAdapter = new CountryAdapter(mCountries);
         mCountryRecyclerView.setAdapter(mAdapter);

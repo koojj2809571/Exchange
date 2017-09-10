@@ -27,6 +27,7 @@ public class CountryBaseHelper extends SQLiteOpenHelper {
                 + CountryTable.Cols.TIMESTAMP + ", "
                 + CountryTable.Cols.COUNTRY_NAME + ", "
                 + CountryTable.Cols.CURRENCY + ", "
+                + CountryTable.Cols.FLAG_NAME + ", "
                 + CountryTable.Cols.RATE + ")"
         );
     }

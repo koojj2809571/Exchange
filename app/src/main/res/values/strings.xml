@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Exchange</string>
-    <string name="money_before_exchange_hint">输入兑换金额</string>
+    <string name="money_before_exchange_hint">0.00</string>
+    <string name="pull_to_refresh">Pull To Update</string>
+    <string name="updated_at">Updated At %1$s</string>
+    <string name="release_to_refresh">Release To Refresh</string>
+    <string name="refreshing">Refreshing...</string>
+    <string name="not_updated_yet">Not Updated Yet</string>
+    <string name="updated_just_now">Updated Just Now</string>
+    <string name="time_error">Time Error</string>
+    <string name="no_data_hint">No Data. Pull To Refresh</string>
+    <string name="amount_hint">Click Here To Choose</string>
+    <string name="result_amount">Show Target Amount</string>
+    <string name="option_date">Option Date</string>
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="local_date_format">yyyy-MM-dd</string>
+
     <string name="aed_name">United Arab Emirates Dirham</string>
     <string name="afn_name">Afghan Afghani</string>
     <string name="all_name">Albanian Lek</string>
@@ -79,8 +94,8 @@
     <string name="kgs_name">Kyrgystani Som</string>
     <string name="khr_name">Cambodian Riel</string>
     <string name="kmf_name">Comorian Franc</string>
-    <string name="kpw_name">North Korean Won</string>
-    <string name="krw_name">South Korean Won</string>
+    <string name="kpw_name">South Korean Won</string>
+    <string name="krw_name">North Korean Won</string>
     <string name="kwd_name">Kuwaiti Dinar</string>
     <string name="kyd_name">Cayman Islands Dollar</string>
     <string name="kzt_name">Kazakhstani Tenge</string>

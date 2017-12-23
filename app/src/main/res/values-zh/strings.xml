@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">汇率计算</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_at">上次更新于%1$s前</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
+    <string name="no_data_hint">暂无数据，下拉刷新</string>
+    <string name="amount_hint">点击选择货币</string>
+    <string name="result_amount">显示兑换金额</string>
+    <string name="option_date">选择日期</string>
+    <string name="ok_button">确定</string>
+    <string name="cancel_button">取消</string>
+    <string name="local_date_format">yyyy年MM月dd日</string>
+
     <string name="aed_name">阿联酋迪拉姆</string>
     <string name="afn_name">阿富汗尼</string>
     <string name="all_name">阿尔巴尼亚列克</string>
@@ -78,8 +94,8 @@
     <string name="kgs_name">吉尔吉斯斯坦索姆</string>
     <string name="khr_name">柬埔寨瑞尔</string>
     <string name="kmf_name">科摩罗法郎</string>
-    <string name="kpw_name">南韩元</string>
-    <string name="krw_name">北韩元</string>
+    <string name="kpw_name">北韩元</string>
+    <string name="krw_name">南韩元</string>
     <string name="kwd_name">科威特第纳尔</string>
     <string name="kyd_name">开曼群岛元</string>
     <string name="kzt_name">哈萨克斯坦腾格</string>

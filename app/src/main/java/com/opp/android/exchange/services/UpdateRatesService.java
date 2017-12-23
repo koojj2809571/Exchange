@@ -6,7 +6,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.util.Log;
 
-import com.opp.android.exchange.utils.CountryRates;
+import com.opp.android.exchange.model.CountryRates;
 import com.opp.android.exchange.utils.UpdateRateUtils;
 
 import java.io.IOException;

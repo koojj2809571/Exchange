@@ -1,8 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#a6a6a6">
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="6dp"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="#43413c">
+
+                <ImageView
+                    android:id="@+id/date_image_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/date_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="4"
+                    android:text="0000年00月00日"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <EditText
+            android:id="@+id/original_amount"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:hint="@string/money_before_exchange_hint"
+            android:inputType="numberDecimal"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/amount_layout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#cccccc"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/original_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="6dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/button_style"
+                    android:elevation="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/original_amount_flag"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="4dp"/>
+
+                    <TextView
+                        android:id="@+id/original_amount_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="@string/amount_hint"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/calculation_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_style"
+                    android:elevation="5dp"
+                    android:src="@mipmap/ic_action_calculator"/>
+
+                <LinearLayout
+                    android:id="@+id/result_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="6dp"
+                    android:layout_toRightOf="@id/calculation_button"
+                    android:layout_weight="4"
+                    android:background="@drawable/button_style"
+                    android:elevation="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/result_amount_flag"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="4dp"/>
+
+                    <TextView
+                        android:id="@+id/result_amount_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:text="@string/amount_hint"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/result_amount"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/result_amount"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</ScrollView>

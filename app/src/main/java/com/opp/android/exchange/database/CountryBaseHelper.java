@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.opp.android.exchange.Country;
-import com.opp.android.exchange.database.CountryDBSChema.CountryTable;
+import com.opp.android.exchange.database.CountryDBSchema.CountryTable;
+import com.opp.android.exchange.utils.Utils;
 
 /**
  * Created by OPP on 2017/8/31.
@@ -24,11 +24,9 @@ public class CountryBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + CountryTable.NAME
                 + "(" + " _id integer primary key autoincrement, "
-                + CountryTable.Cols.TIMESTAMP + ", "
-                + CountryTable.Cols.COUNTRY_NAME + ", "
-                + CountryTable.Cols.CURRENCY + ", "
-                + CountryTable.Cols.FLAG_NAME + ", "
-                + CountryTable.Cols.RATE + ")"
+                + CountryTable.Cols.COUNTRY_NAME + " text, "
+                + CountryTable.Cols.CURRENCY + " integer, "
+                + CountryTable.Cols.FLAG_PATH + " text)"
         );
     }
 

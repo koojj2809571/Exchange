@@ -1,4 +1,4 @@
-package com.opp.android.exchange.utils;
+package com.opp.android.exchange.model;
 
 /**
  * Created by OPP on 2017/9/3.
@@ -8,7 +8,7 @@ public class CountryRates {
     private boolean success;
     private String terms;
     private String privacy;
-    private int timestamp;
+    private long timestamp;
     private String source;
     private QuotesBean quotes;
 
@@ -36,11 +36,11 @@ public class CountryRates {
         this.privacy = privacy;
     }
 
-    public int getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 

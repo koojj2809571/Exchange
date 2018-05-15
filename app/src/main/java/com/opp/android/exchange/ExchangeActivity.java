@@ -1,6 +1,7 @@
 package com.opp.android.exchange;
 
 import android.app.Activity;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.facebook.stetho.Stetho;
@@ -60,14 +64,16 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
     private ImageButton mCalculationImageButton;
     private ImageView mDateImageButton;
     private TextView mDateTextView;
+    private android.support.v7.widget.Toolbar mToolbar;
+
     private CountryStore mCountryStore;
     private SQLiteDatabase mDatabase;
     private long currentTimestamp;
     Bundle arguments;
 
-    public void setCurrentTimestamp(long date){
+    public void setCurrentTimestamp(long date) {
         currentTimestamp = date;
-        mDateTextView.setText(Utils.timestampToLocalString(mContext,currentTimestamp));
+        mDateTextView.setText(Utils.timestampToLocalString(mContext, currentTimestamp));
     }
 
     @Override
@@ -76,8 +82,12 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
         arguments = savedInstanceState;
         Log.d(TAG, "onCreate: 被调用了！");
         setContentView(R.layout.activity_exchange);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.getWindow().setStatusBarColor(getColor(R.color.colorToolbar));
+        }else {
+            this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         mAppContext = getApplicationContext();
         mContext = ExchangeActivity.this;
         mCountryStore = CountryStore.get(mContext);
@@ -97,6 +107,8 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
         originalAmount = (EditText) findViewById(R.id.original_amount);
         resultAmount = (TextView) findViewById(R.id.result_amount);
 
+        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
         mOriginalLayout = (LinearLayout) findViewById(R.id.original_layout);
         mOriginalLayout.setOnClickListener(this);
         mOriginalFlag = (ImageView) findViewById(R.id.original_amount_flag);
@@ -115,6 +127,28 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.service_item:
+                Toast.makeText(mContext, "点击了服务按钮", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+        }
+        return true;
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: 被调用了！");
@@ -130,18 +164,18 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         Log.d(TAG, "onSaveInstanceState: 被调用了！");
-        savedInstanceState.putLong(TIME_ARGUMENTS,currentTimestamp);
+        savedInstanceState.putLong(TIME_ARGUMENTS, currentTimestamp);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume: 被调用了！");
-        if (currentTimestamp == 0){
-            if (arguments == null){
+        if (currentTimestamp == 0) {
+            if (arguments == null) {
                 currentTimestamp = System.currentTimeMillis();
-            }else {
-                currentTimestamp = arguments.getLong(TIME_ARGUMENTS,0l);
+            } else {
+                currentTimestamp = arguments.getLong(TIME_ARGUMENTS, 0l);
             }
 
         }
@@ -161,7 +195,7 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
         calculate();
     }
 
-    public void updateAmount(){
+    public void updateAmount() {
         setAmount(ORIGINAL_CURRENCY, mOriginalFlag, mOriginalRate);
         setAmount(RESULT_CURRENCY, mResultFlag, mResultRate);
     }
@@ -213,8 +247,8 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         Intent intent = newIntent(mContext);
-        if (v.getId() == R.id.original_amount){
-        }else {
+        if (v.getId() == R.id.original_amount) {
+        } else {
             hideInputForce(this);
         }
         switch (v.getId()) {
@@ -254,7 +288,7 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
     /**
      * 计算
      */
-    private void calculate(){
+    private void calculate() {
         String inputText = originalAmount.getText().toString();
         if (inputText == null || inputText.equals("")) {
             Toast.makeText(mAppContext, "请输入持有货币金额", Toast.LENGTH_SHORT).show();
@@ -274,9 +308,9 @@ public class ExchangeActivity extends AppCompatActivity implements View.OnClickL
 
     /**
      * 根据传入账户名称（原始账户/结果账户，ListActivity中定义）获取当前选中国家
-     * ，根据国家名称查询数据库获取对应汇率数值，返回-1时查询失败（暂未更新完成）。
+     * ，根据国家名称查询数据库获取对应汇率数值，返回-1时查询失败（表示暂未更新完成）。
      */
-    private double getRateValue(String currency){
+    private double getRateValue(String currency) {
         double rate = 0.0;
         if (mPreferences != null) {
             String amountCurrency = mPreferences.getString(currency, "empty");
